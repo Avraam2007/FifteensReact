@@ -1,0 +1,216 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@mixin sizes($width,$height) {
+    width:$width;
+    height:$height;
+}
+
+@keyframes appear {
+  from {
+    transform: scale(0.2);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@mixin fieldGrid($side) {
+    grid-template-columns: repeat($side, 1fr);
+    grid-template-rows: repeat($side, 1fr);
+}
+
+.content {
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.controlBox {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.timerBox {
+    @include sizes(150px, 40px);
+    border-radius: 25px;
+    display: block;
+    padding: 0 20px;
+    background-color: #b35d5d;
+
+    .timer {
+        position: relative;
+        transform: translate(0,-50%);
+        top: 50%;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #fff;
+    }
+}
+
+.movesBox {
+    min-width: 50px;
+    max-width: 150px;
+    height: 40px;
+    border-radius: 25px;
+    display: block;
+    padding: 0 20px;
+    background-color: #815db3;
+
+    .moves {
+        position: relative;
+        transform: translate(0,-50%);
+        top: 50%;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #fff;
+    }
+}
+
+.randomBtn{
+    @include sizes(150px,40px);
+    border-radius: 25px;
+    border: none;
+    display: block;
+    padding: 0 20px;
+    background-color: #5d6bb3;
+
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    transition: 0.2s ease-in;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}
+
+.customField {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.field{
+    @include sizes(400px,400px);
+    background-color: #9b9b9b;
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+    margin-left: 20px;
+    transition: all 0.5s;
+
+    &[class$="3"] {
+        @include fieldGrid(3);
+    }
+
+    &[class$="4"] {
+        @include fieldGrid(4);
+    }
+
+    &[class$="5"] {
+        @include fieldGrid(5);
+    }
+
+    &[class$="6"] {
+        @include fieldGrid(6);
+    }
+
+    &[class$="7"] {
+        @include fieldGrid(7);
+    }
+
+    &[class$="8"] {
+        @include fieldGrid(8);
+    }
+
+    .block {
+        background-color: #d4d4d4;
+        text-align: center;
+        animation-duration: 0.5s;
+        animation-name: appear;
+    }
+
+    .zeroBlock{
+        opacity: 0;
+    }
+
+    .blockNumber {
+        position: relative;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
+        font-size: large;
+        font-weight: 700;
+    }
+}
+
+.fieldSizePanel {
+    @include sizes(20px,400px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;  
+
+    button {
+        all: unset;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.arrowContainer {
+    @include sizes(max-content,max-content);
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5px;
+    
+
+    button {
+        @include sizes(50px,50px);
+        background-color: #d4d4d4;
+        border: 5px solid #9b9b9b;
+        cursor: pointer;
+
+        &:active {
+            background-color: darken($color: #d4d4d4, $amount: 5);
+            border-color: darken($color: #9b9b9b, $amount: 5);
+        }
+
+        &[id$="Up"]{
+            grid-column: 2 / 2;
+            grid-row: 1 / 1;
+        }
+        &[id$="Down"]{
+            grid-column: 2 / 2;
+            grid-row: 2 / 2;
+        }
+        &[id$="Left"]{
+            grid-column: 1 / 1;
+            grid-row: 2 / 2;
+        }
+        &[id$="Right"]{
+            grid-column: 3 / 3;
+            grid-row: 2 / 2;
+        }
+    }
+}

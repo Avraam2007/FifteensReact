@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.clockBackground {
+    width: 800px;
+    height: 800px;
+    background-image: url("../../public/clock.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.secArrow {
+    width: 10px;
+    height: 350px;
+    background-color: red;
+    transform-origin: bottom center;
+    position: absolute;
+    top: 432px;
+    left: 400px;
+}
+.minArrow {
+    width: 10px;
+    height: 320px;
+    background-color: black;
+    transform-origin: bottom center;
+    position: absolute;
+    top: 432px;
+    left: 400px;
+}
+.hourArrow {
+    width: 10px;
+    height: 200px;
+    background-color: black;
+    transform-origin: bottom center;
+    position: absolute;
+    top: 432px;
+    left: 400px;
+    
+}
+
+.circle {
+    width: 15px;
+    height: 15px;
+    background-color: black;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    top: 432px;
+    left: 400px;
+    border-radius: 50%;
+    
+}
